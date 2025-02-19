@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
         // Check for fall
         if (Mathf.Abs(balance) >= fallThreshold)
         {
-            Debug.Log("Player has fallen!");
+            //Debug.Log("Player has fallen!");
             // Handle fall logic (reset, lose condition, etc.)
         }
     }
