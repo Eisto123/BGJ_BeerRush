@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ab73fbb64048e584681328ae62bc6268
+guid: d26952fcdb7154a469b55403d6907f9a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,37 +93,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: beer_broke_Sheet_0
+      name: waitress_dodge_Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10f6eadabfdb331479f52fbd55963799
-      internalID: 1472569216
+      spriteID: 8135b3394f63275409f85ae9e9814ec1
+      internalID: -902430270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: beer_broke_Sheet_1
+      name: waitress_dodge_Sheet_1
       rect:
         serializedVersion: 2
         x: 480
@@ -158,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9a9857902368534e8f98c0140a942c5
-      internalID: 694630062
+      spriteID: c48592f2060c5f048bcfa207ad1d84cc
+      internalID: 111538558
       vertices: []
       indices: 
       edges: []
@@ -175,8 +149,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      beer_broke_Sheet_0: 1472569216
-      beer_broke_Sheet_1: 694630062
+      waitress_dodge_Sheet_0: -902430270
+      waitress_dodge_Sheet_1: 111538558
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
