@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     public Animator playerAnim;
+    public BeerHolder beerHolder;
 
 
     void Awake()
@@ -190,7 +191,6 @@ public class Player : MonoBehaviour
             yield return null; // Wait for next frame
         }
         rb.velocity = Vector2.zero;
-        
         //UI pannel
     }
 
@@ -199,6 +199,42 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Water"))
         {
             FallOff();
+        }
+    }
+
+    public void OnRestart()
+    {
+        Time.timeScale = 1;
+        isDead = false;
+        balance = 0;
+        rb.velocity = Vector2.zero;
+        transform.position = new Vector3(0, 0, 0);
+    }
+    
+    public void ReduceBeer(int beerNum)
+    {
+        StartCoroutine(ReducingBeer(beerNum));
+    }
+    private IEnumerator ReducingBeer(int beerNum)
+    {
+        for (int i = 0; i < beerNum; i++)
+        {
+            beerHolder.RemoveBeer();
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    public void AddBeer(int beerNum)
+    {
+        StartCoroutine(AddingBeer(beerNum));
+    }
+
+    private IEnumerator AddingBeer(int beerNum)
+    {
+        for (int i = 0; i < beerNum; i++)
+        {
+            beerHolder.AddBeer();
+            yield return new WaitForSeconds(0.2f);
         }
     }
 

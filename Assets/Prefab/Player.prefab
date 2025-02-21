@@ -203,6 +203,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   playerAnim: {fileID: 4110780121101044152}
+  beerHolder: {fileID: 6602054718781980425}
 --- !u!114 &1151304851270702341
 MonoBehaviour:
   m_ObjectHideFlags: 0

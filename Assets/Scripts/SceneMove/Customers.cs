@@ -108,7 +108,6 @@ public class Customers : MonoBehaviour
 
         // Player get #beerNum new beer
         Debug.Log("get "+beerNum+" beer");
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

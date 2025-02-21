@@ -26,17 +26,13 @@ public class GameManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventHandler.GameOverEvent += OnGameOverEvent;
-        EventHandler.GetPointEvent += OnGetPointEvent;
     }
 
     private void OnDisable()
     {
-        EventHandler.GameOverEvent -= OnGameOverEvent;
-        EventHandler.GetPointEvent -= OnGetPointEvent;
     }
 
-    private void OnGameOverEvent()
+    public void GameOver()
     {
         if (score > highestScore)
         {
@@ -46,7 +42,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnGetPointEvent(int point)
+    public void GetPoint(int point)
     {
         score = point;
     }
