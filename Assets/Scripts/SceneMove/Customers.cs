@@ -17,6 +17,11 @@ public class Customers : MonoBehaviour
     public List<GameObject> chairList;
     public Animator beerBubble;
 
+    [Header("Generate Parameters")]
+    public int maxBeerOffset;
+    public float minTime;
+    public float maxTimeOffset;
+
     public int customerNum;
     public int beerNum;
     public float waitingTime;
@@ -44,6 +49,10 @@ public class Customers : MonoBehaviour
 
         // need replace!
         //SetNumber(2,3,3);
+        
+        customerNum = UnityEngine.Random.Range(1,5);
+        beerNum = customerNum + UnityEngine.Random.Range(0, maxBeerOffset);
+        waitingTime = minTime + UnityEngine.Random.Range(0f, maxTimeOffset);
         SetNumber(customerNum,beerNum,waitingTime);
     }
 

@@ -124,6 +124,9 @@ MonoBehaviour:
   - {fileID: 6425782306528482905}
   - {fileID: 1687018206471207619}
   beerBubble: {fileID: 5284473211101506378}
+  maxBeerOffset: 5
+  minTime: 5
+  maxTimeOffset: 5
   customerNum: 2
   beerNum: 2
   waitingTime: 3
