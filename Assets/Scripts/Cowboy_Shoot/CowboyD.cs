@@ -22,7 +22,7 @@ public class CowboyD : Cowboy
 
     protected override void CheckPlayerIsNearBy()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < 8f)
+        if (Mathf.Abs(transform.position.y - player.transform.position.y) < 8f)
         {
             playerIsNearBy = true;
         }

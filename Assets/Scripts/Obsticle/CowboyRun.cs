@@ -30,13 +30,9 @@ public class CowboyRun : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < 3f)
+        if (Mathf.Abs(transform.position.y - player.transform.position.y) < 5f)
         {
             playerIsNearBy = true;
-        }
-        else
-        {
-            playerIsNearBy = false;
         }
 
         if(playerIsNearBy)

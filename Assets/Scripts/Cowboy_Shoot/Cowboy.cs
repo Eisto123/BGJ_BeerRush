@@ -16,10 +16,16 @@ public abstract class Cowboy : MonoBehaviour
 
     protected virtual void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(StartProcess());
+        
+    }
+    private IEnumerator StartProcess()
+    {
+        yield return new WaitForSeconds(2f);
         initialY = transform.position.y;
         PickNewPosition();
-        player = GameObject.FindGameObjectWithTag("Player");
-        
+        Debug.Log(initialY);
     }
 
     protected virtual void Update()
@@ -36,7 +42,7 @@ public abstract class Cowboy : MonoBehaviour
     }
 
     protected virtual void CheckPlayerIsNearBy(){
-        if(Vector3.Distance(transform.position, player.transform.position) < 5f){
+        if(Mathf.Abs(transform.position.y - player.transform.position.y) < 5f){
             playerIsNearBy = true;
         }else{
             playerIsNearBy = false;
