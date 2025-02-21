@@ -6,6 +6,8 @@ public class BeerHolder : MonoBehaviour
 {
     public GameObject[] beers = new GameObject[6];
 
+    private bool beerIsFull;
+
     // Start is called before the first frame update
 
     void Awake()
@@ -21,6 +23,10 @@ public class BeerHolder : MonoBehaviour
                 beers[i].SetActive(true);
                 break;
             }
+            if(i == beers.Length - 1)
+            {
+                beerIsFull = true;
+            }
         }
     }
     public void RemoveBeer()
@@ -30,8 +36,14 @@ public class BeerHolder : MonoBehaviour
             if (beers[i].activeSelf == true)
             {
                 beers[i].SetActive(false);
+                beerIsFull = false;
                 break;
             }
+            if (i == 0)
+            {
+                Debug.Log("No beer to remove");
+            }
+
         }
     }
 

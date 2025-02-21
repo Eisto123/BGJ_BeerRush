@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,7 +95,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: cowboy3_shoot_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 880
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81aebd80339605245897085265ba6faf
+      internalID: -871123116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cowboy3_shoot_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 0
+        width: 880
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33cb24a9b7073f44ea607624fe1e1081
+      internalID: -172346299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cowboy3_shoot_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 0
+        width: 880
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8885233caca5fa84f8c26d243373cb19
+      internalID: 1227451650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cowboy3_shoot_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 2640
+        y: 0
+        width: 880
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0642adc23cf3794f86901c60a77f538
+      internalID: 1985627219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cowboy3_shoot_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 3520
+        y: 0
+        width: 880
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 176c787b5617fec44a671da2e5d0aecf
+      internalID: 1007792754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cowboy3_shoot_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 4400
+        y: 0
+        width: 880
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d89a08e3871d3bd4a9a76556a2b33cd7
+      internalID: -1496409487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +232,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cowboy3_shoot_Sheet_0: -871123116
+      cowboy3_shoot_Sheet_1: -172346299
+      cowboy3_shoot_Sheet_2: 1227451650
+      cowboy3_shoot_Sheet_3: 1985627219
+      cowboy3_shoot_Sheet_4: 1007792754
+      cowboy3_shoot_Sheet_5: -1496409487
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

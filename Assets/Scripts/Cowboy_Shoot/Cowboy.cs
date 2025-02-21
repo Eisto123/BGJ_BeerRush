@@ -1,27 +1,46 @@
 using System.Collections;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Cowboy : MonoBehaviour
 {
     protected float moveSpeed = 0.5f;
-    protected float minY = -1f;
-    protected float maxY = 1f;
+    protected float minY = -0.5f;
+    protected float maxY = 0.5f;
     protected bool isShooting = false;
-
+    protected bool playerIsNearBy = false;
+    protected GameObject player;
     protected Vector3 targetPosition;
+    private float initialY;
 
     protected virtual void Start()
     {
+        initialY = transform.position.y;
         PickNewPosition();
+        player = GameObject.FindGameObjectWithTag("Player");
+        
     }
 
     protected virtual void Update()
     {
+        CheckPlayerIsNearBy();
         if(!isShooting){
             Move();
-            CheckForShooting();
+            if(playerIsNearBy){
+                CheckForShooting();
+            }
+            
         }
         
+    }
+
+    protected virtual void CheckPlayerIsNearBy(){
+        if(Vector3.Distance(transform.position, player.transform.position) < 5f){
+            playerIsNearBy = true;
+        }else{
+            playerIsNearBy = false;
+        }
     }
 
     private void Move()
@@ -36,11 +55,11 @@ public abstract class Cowboy : MonoBehaviour
 
     private void PickNewPosition()
     {
-        float newY = Random.Range(minY, maxY);
+        float newY = initialY + UnityEngine.Random.Range(minY, maxY);
         targetPosition = new Vector3(transform.position.x, newY, transform.position.z);
     }
 
-    private void CheckForShooting()
+    protected virtual void CheckForShooting()
     {
         Cowboy[] cowboys = FindObjectsOfType<Cowboy>();
         foreach (var other in cowboys)
