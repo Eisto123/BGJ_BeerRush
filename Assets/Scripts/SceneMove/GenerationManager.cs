@@ -116,6 +116,12 @@ public class GenerationManager : MonoBehaviour
             prevEvent.Add(currEvent[i]);
         }
         
+        currEvent.Clear();
+        for (int i = 0; i < numOfPixelX; i++)
+        {
+            currEvent.Add(-1);
+        }
+
         // currEventChoice = [[1,2,3],[1,2,3],[1,2,3],[1,2,3]]
         for (int i = 0; i < numOfPixelX; i++)
         {
@@ -129,12 +135,6 @@ public class GenerationManager : MonoBehaviour
         if (ShootGeneration(floor, spriteSize))
         {
             return;
-        }
-
-        currEvent.Clear();
-        for (int i = 0; i < numOfPixelX; i++)
-        {
-            currEvent.Add(0);
         }
 
         PrevCustomerDetect(floor, spriteSize);
@@ -152,23 +152,25 @@ public class GenerationManager : MonoBehaviour
             //Debug.Log("last is shoot");
             ShootEvent prevShoot = shootEvents.Last.Value;
 
-            // diagonal & only left cowboy, generate the upleft one
+            // diagonal & only right cowboy, generate the upleft one
             if (prevShoot.type == 1 && prevShoot.direction == 1)
             {
                 ShootEvent currShoot = new ShootEvent();
                 currShoot.type = 1;
                 currShoot.direction = 0;
-                currShoot.cowboyPos = prevShoot.cowboyPos-2;
-                GameObject cowboy = Instantiate(shootPrefab[3],floor);
-                // cowboy.transform.localPosition = new Vector2(spriteSize, 0);
-                cowboy.transform.localPosition = new Vector2((2*currShoot.cowboyPos-3)*spriteSize/2, 0);
-
+                currShoot.cowboyPos = prevShoot.cowboyPos-3;
                 shootEvents.AddLast(currShoot);
 
-                currEvent.Clear();
-                currEvent.Add(0);
+                GameObject cowboy = Instantiate(shootPrefab[3],floor);
+                cowboy.transform.position = new Vector2((2*currShoot.cowboyPos-3)*spriteSize/2, cowboy.transform.position.y);
 
-                return true;
+                currEvent[currShoot.cowboyPos] = 0;
+
+                // Update the valid choices
+                currEventChoice[currShoot.cowboyPos].Clear();
+                currEventChoice[currShoot.cowboyPos+1].Clear();
+
+                return false;
             }
             // else, this floor no shooting
             else
@@ -191,6 +193,9 @@ public class GenerationManager : MonoBehaviour
         shootR.type = UnityEngine.Random.Range(0,2);
         shootR.direction = 1;
         shootR.cowboyPos = UnityEngine.Random.Range(2,4);
+        shootEvents.AddLast(shootR);
+
+        currEvent[shootR.cowboyPos] = 0;
 
         if (shootR.type == 0) // staright
         {
@@ -198,31 +203,36 @@ public class GenerationManager : MonoBehaviour
             shootL.type = 0;
             shootL.direction = 0;
             shootL.cowboyPos = shootR.cowboyPos-2;
+            shootEvents.AddLast(shootL);
+            
+            GameObject cowboyR = Instantiate(shootPrefab[1],floor);
+            cowboyR.transform.position = new Vector2((2*shootR.cowboyPos-3)*spriteSize/2, cowboyR.transform.position.y);
             
             GameObject cowboyL = Instantiate(shootPrefab[0],floor);
-            // cowboy.transform.localPosition = new Vector2(-spriteSize, 0);
-            cowboyL.transform.localPosition = new Vector2((2*shootL.cowboyPos-3)*spriteSize/2, 0);
+            cowboyL.transform.position = new Vector2((2*shootL.cowboyPos-3)*spriteSize/2, cowboyL.transform.position.y);
 
-            GameObject cowboyR = Instantiate(shootPrefab[1],floor);
-            // cowboy.transform.localPosition = new Vector2(spriteSize, 0);
-            cowboyR.transform.localPosition = new Vector2((2*shootR.cowboyPos-3)*spriteSize/2, 0);
+            currEvent[shootL.cowboyPos] = 0;
 
-            shootEvents.AddLast(shootL);
-            shootEvents.AddLast(shootR);
+            return true;
         }
         else
         {
-            GameObject cowboyR = Instantiate(shootPrefab[2],floor);
-            // cowboy.transform.localPosition = new Vector2(-spriteSize, 0);
-            cowboyR.transform.localPosition = new Vector2((2*shootR.cowboyPos-3)*spriteSize/2, 0);
+            // last floor[3] has customers, will overlap the cowboy
+            if (prevEvent[3] == 2)
+            {
+                return false;
+            }
 
-            shootEvents.AddLast(shootR);
+            shootR.cowboyPos = 3;
+            GameObject cowboyR = Instantiate(shootPrefab[2],floor);
+            cowboyR.transform.position = new Vector2((2*shootR.cowboyPos-3)*spriteSize/2, cowboyR.transform.position.y);
+
+            // Update the valid choices
+            currEventChoice[shootR.cowboyPos].Clear();
+            currEventChoice[shootR.cowboyPos-1].Clear();
         }
 
-        currEvent.Clear();
-        currEvent.Add(0);
-
-        return true;
+        return false;
     }
 
     
@@ -259,6 +269,13 @@ public class GenerationManager : MonoBehaviour
         {
 
             if (spawnedFloor >= 2) break;
+
+            // no choice, leave empty
+            if (currEventChoice[i].Count == 0)
+            {
+                currEvent[i] = currEvent[i] == 0? 0 : 1;
+                continue;
+            }
 
             // cannot generate empty floor if there are already two empty road
             if (emptyFloor >= 2)
@@ -319,11 +336,12 @@ public class GenerationManager : MonoBehaviour
 
     private void NaughtyCowboyGenerate(Transform floor, float spriteSize)
     {
-        bool ifNaughty = UnityEngine.Random.Range(0f,1f) < naughtyProb;
+        bool ifNaughty = UnityEngine.Random.Range(0f,1f) <= naughtyProb;
 
         if (!ifNaughty) return;
 
-        int naughtyType = UnityEngine.Random.Range(0,2); // 0: drop; 1: run
+        //int naughtyType = UnityEngine.Random.Range(0,2); // 0: drop; 1: run
+        int naughtyType = UnityEngine.Random.Range(1,2); // 0: drop; 1: run
 
         if (naughtyType == 0)
         {
@@ -332,14 +350,14 @@ public class GenerationManager : MonoBehaviour
             float x = xmin <= xmax ? UnityEngine.Random.Range(xmin, xmax) : 0;
 
             GameObject newDrop = Instantiate(dropCowboy, floor);
-            newDrop.transform.localPosition = new Vector3(x,0);
+            //newDrop.transform.localPosition = new Vector3(x,0);
         }
         else if (naughtyType == 1)
         {
             float x = -spriteSize * (numOfPixelX/2+1) + dropOffset;
 
             GameObject newRun = Instantiate(runCowboy, floor);
-            newRun.transform.localPosition = new Vector3(x,0);
+            //newRun.transform.localPosition = new Vector3(x,0);
         }
     }
 

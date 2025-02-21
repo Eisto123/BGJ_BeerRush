@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 142940415605780824}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.68, y: 2.31, z: 0}
+  m_LocalPosition: {x: 3.68, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -124,6 +124,7 @@ MonoBehaviour:
   - {fileID: 6425782306528482905}
   - {fileID: 1687018206471207619}
   beerBubble: {fileID: 5284473211101506378}
+  missDist: 2
   maxBeerOffset: 5
   minTime: 5
   maxTimeOffset: 5
@@ -536,7 +537,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 744032027
   m_SortingLayer: 2
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -205680375, guid: 2725eb707489aca4488abf72cd7b1253, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

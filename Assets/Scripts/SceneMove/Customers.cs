@@ -16,8 +16,10 @@ public class Customers : MonoBehaviour
     public List<CustomerImage> customerSprite;
     public List<GameObject> chairList;
     public Animator beerBubble;
+    public float missDist = 2;
 
     [Header("Generate Parameters")]
+    [Range(0,5)]
     public int maxBeerOffset;
     public float minTime;
     public float maxTimeOffset;
@@ -61,7 +63,7 @@ public class Customers : MonoBehaviour
     {
         if (!startTimer) return;
 
-        timer -= Time.deltaTime;
+        /*timer -= Time.deltaTime;
 
         // Time's out, customer unsatisfied
         if (timer < 0)
@@ -72,6 +74,14 @@ public class Customers : MonoBehaviour
             Debug.Log("lose score");
             trigger.enabled = false;
             beerBubble.gameObject.SetActive(false);
+        }*/
+
+        float dist = player.transform.position.y - transform.position.y;
+        if (dist > missDist && !beerSolved)
+        {
+            beerBubble.SetBool("miss", true);
+
+            // GameManager, count miss numbers
         }
     }
 
