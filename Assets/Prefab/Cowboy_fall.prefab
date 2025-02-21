@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 1.68, y: 1.68, z: 1.68}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7357318049323608503}
@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 7579733997519304674}
   - component: {fileID: 7725742474605418585}
   - component: {fileID: 8944925420468474822}
+  - component: {fileID: 3901310380589189044}
   m_Layer: 0
   m_Name: Cowboy_fall
   m_TagString: Water
@@ -279,3 +280,30 @@ PolygonCollider2D:
       - {x: 1.4999981, y: -10.187499}
       - {x: 3.187498, y: -10.249999}
   m_UseDelaunayMesh: 0
+--- !u!50 &3901310380589189044
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812070072810716249}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

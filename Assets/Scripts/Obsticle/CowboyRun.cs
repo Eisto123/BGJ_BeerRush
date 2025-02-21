@@ -12,6 +12,7 @@ public class CowboyRun : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         
         // Randomly decide the start position
         if (Random.value > 0.5f)

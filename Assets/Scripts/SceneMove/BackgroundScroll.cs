@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class BackgroundScroll : MonoBehaviour
 {
+    public GenerationManager generationManager;
+
     [Range(0f,1f)]
     public float moveSpeed;
     public SpriteRenderer pixelSprite;
     [Tooltip("How many pixel in y axis per camera length, 4 in default")]
-    public int numOfPixelY;
+    public int numOfPixelY=4;
     private float camLength; // camera length
     private float camHeight; // camera height
     
@@ -22,6 +24,8 @@ public class BackgroundScroll : MonoBehaviour
         camLength = pixelSprite.bounds.size.y * numOfPixelY;
         mainCamera = GameObject.FindGameObjectsWithTag("MainCamera")[0];
         camHeight = mainCamera.GetComponent<Camera>().orthographicSize*2;
+
+        generationManager = GameObject.FindFirstObjectByType<GenerationManager>();
     }
 
     // Update is called once per frame
@@ -34,7 +38,16 @@ public class BackgroundScroll : MonoBehaviour
         if (temp > startPos.y+camLength)
         {
             startPos.y+=2*camLength;
-            GenerateObstacle();
+            // Clear current obstacles
+            foreach (Transform child in transform)
+            {
+                if (child.gameObject.name != "floor")
+                {
+                    Destroy(child.gameObject);
+                }
+            }
+            //GenerateObstacle();
+            generationManager.SceneGeneration(transform, pixelSprite.bounds.size.x);
         }
     }
 
@@ -90,13 +103,6 @@ public class BackgroundScroll : MonoBehaviour
     {
         
     }
-}
-
-[Serializable]
-public class Obstacle
-{
-    public GameObject obstacle;
-    public Vector2 radius;
 }
 
 
