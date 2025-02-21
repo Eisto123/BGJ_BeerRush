@@ -31,21 +31,17 @@ public class CowboyFall : MonoBehaviour
         spriteRenderer.enabled = false;
         polygonCollider2D.enabled = false;
         initialShadowScale = shadow.localScale; // Save the original shadow size
-        startZ = transform.position.z; // Save initial Y position
+        startZ = transform.localPosition.z; // Save initial Z position
     }
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < 3f)
+        if (Mathf.Abs(transform.position.y - player.transform.position.y) < 5f)
         {
             playerIsNearBy = true;
         }
-        else
-        {
-            playerIsNearBy = false;
-        }
-
-        if (transform.position.z > groundZ&&playerIsNearBy)
+        if(playerIsNearBy){
+            if (transform.position.z > groundZ)
         {
             // Move cowboy down
             transform.position += Vector3.back * fallSpeed * Time.deltaTime;
@@ -60,10 +56,11 @@ public class CowboyFall : MonoBehaviour
         else
         {
             // Ensure cowboy lands exactly at the ground position
-
             spriteRenderer.enabled = true;
             polygonCollider2D.enabled = true;
             transform.position = new Vector3(transform.position.x, transform.position.y, groundZ);
         }
+        }
+        
     }
 }
