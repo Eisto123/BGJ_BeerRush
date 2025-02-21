@@ -5,15 +5,7 @@ using UnityEngine;
 public class BeerHolder : MonoBehaviour
 {
     public GameObject[] beers = new GameObject[6];
-
     private bool beerIsFull;
-
-    // Start is called before the first frame update
-
-    void Awake()
-    {
-        
-    }
     public void AddBeer()
     {
         for (int i = 0; i < beers.Length; i++)
@@ -35,6 +27,7 @@ public class BeerHolder : MonoBehaviour
         {
             if (beers[i].activeSelf == true)
             {
+                Debug.Log("Removing beer");
                 beers[i].SetActive(false);
                 beerIsFull = false;
                 break;
