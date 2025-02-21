@@ -255,7 +255,7 @@ MonoBehaviour:
   - {fileID: 8974226440505437984, guid: 9f652f6af7aaa884eb833dcdd739fb48, type: 3}
   - {fileID: 1685726617098767984, guid: f88212307c858db41b7faebb07c604b2, type: 3}
   - {fileID: 6981999118063064993, guid: 2164678a33f8d5545bff64b0afe84a2f, type: 3}
-  shootingProb: 0.656
+  shootingProb: 0.297
   customerTable: {fileID: 5229503483140682340, guid: f3c49d99f36602f429512f929ffce3ba, type: 3}
   obstacles:
   - obstacle: {fileID: 754607749799082851, guid: afee461d4a2ea7c4c8cae45305e2cfb4, type: 3}

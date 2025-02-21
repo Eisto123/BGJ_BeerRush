@@ -193,7 +193,6 @@ public class GenerationManager : MonoBehaviour
         shootR.type = UnityEngine.Random.Range(0,2);
         shootR.direction = 1;
         shootR.cowboyPos = UnityEngine.Random.Range(2,4);
-        shootEvents.AddLast(shootR);
 
         currEvent[shootR.cowboyPos] = 0;
 
@@ -203,6 +202,8 @@ public class GenerationManager : MonoBehaviour
             shootL.type = 0;
             shootL.direction = 0;
             shootL.cowboyPos = shootR.cowboyPos-2;
+            
+            shootEvents.AddLast(shootR);
             shootEvents.AddLast(shootL);
             
             GameObject cowboyR = Instantiate(shootPrefab[1],floor);
@@ -224,6 +225,8 @@ public class GenerationManager : MonoBehaviour
             }
 
             shootR.cowboyPos = 3;
+            shootEvents.AddLast(shootR);
+
             GameObject cowboyR = Instantiate(shootPrefab[2],floor);
             cowboyR.transform.position = new Vector2((2*shootR.cowboyPos-3)*spriteSize/2, cowboyR.transform.position.y);
 
