@@ -33,7 +33,8 @@ public class BackgroundScroll : MonoBehaviour
         float temp = mainCamera.transform.position.y * (1-moveSpeed);
         if (temp > startPos.y+camLength)
         {
-            Scroll();
+            startPos.y+=2*camLength;
+            GenerateObstacle();
         }
     }
 
@@ -43,10 +44,8 @@ public class BackgroundScroll : MonoBehaviour
     public Vector2 offset;
     public int numOfPixelX;
 
-    private void Scroll()
+    private void GenerateObstacle()
     {
-        startPos.y+=2*camLength;
-
         // Clear current obstacles
         foreach (Transform child in transform)
         {
@@ -72,15 +71,23 @@ public class BackgroundScroll : MonoBehaviour
         float ymin = -pixelSprite.bounds.size.y/2 + offset.y + obstacleRadius.y;
         float ymax = pixelSprite.bounds.size.y/2 - offset.y - obstacleRadius.y;
 
-        Debug.Log(xmin +" "+ xmax+" "+ ymin +" "+ ymax);
+        //Debug.Log(xmin +" "+ xmax+" "+ ymin +" "+ ymax);
 
         float x = xmin <= xmax ? UnityEngine.Random.Range(xmin, xmax) : 0;
         float y = ymin <= ymax ? UnityEngine.Random.Range(ymin, ymax) : 0;
 
-        Debug.Log(x+" "+y);
+        //Debug.Log(x+" "+y);
 
         GameObject newBucket = Instantiate(obstacles[index].obstacle, this.transform);
         newBucket.transform.localPosition = new Vector3(x,y);
+        
+    }
+
+    [Header("Customer Generation")]
+    public float customerProb;
+
+    private void GenerateCustomer()
+    {
         
     }
 }
@@ -91,3 +98,5 @@ public class Obstacle
     public GameObject obstacle;
     public Vector2 radius;
 }
+
+
