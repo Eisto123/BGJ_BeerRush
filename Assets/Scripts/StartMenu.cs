@@ -9,6 +9,7 @@ public class StartMenu : MonoBehaviour
 
     void Start()
     {
+        AudioManager.Instance.EnableAudioSource();
         StartCoroutine(AudioManager.Instance.PlayBGM(0,0.01f,true));   
     }
 
