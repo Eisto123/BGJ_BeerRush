@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using Unity.PlasticSCM.Editor.WebApi;
 
 
 [Serializable]
@@ -25,7 +26,7 @@ public class GenerationManager : MonoBehaviour
     // 1: empty
     // 2: customer
     // 3: obstacle
-    // 4: surprise
+    // 4: ornament
     public List<int> startEvent;
     private List<int> prevEvent;
     private List<int> currEvent;
@@ -57,6 +58,11 @@ public class GenerationManager : MonoBehaviour
     public GameObject runCowboy;
     [Range(0f,3f)]
     public float dropOffset;
+
+    [Header("Ornament")]
+    [Range(0f,1f)]
+    public float ornamentProb;
+    public List<GameObject> ornament;
 
     void Start()
     {
@@ -136,6 +142,8 @@ public class GenerationManager : MonoBehaviour
         ObjectGenerate(floor, spriteSize);
 
         NaughtyCowboyGenerate(floor, spriteSize);
+
+        OrnamentGenerate(floor, spriteSize);
         
     }
 
@@ -157,7 +165,8 @@ public class GenerationManager : MonoBehaviour
                 shootEvents.AddLast(currShoot);
 
                 GameObject cowboy = Instantiate(shootPrefab[3],floor);
-                cowboy.transform.position = new Vector2((2*currShoot.cowboyPos-3)*spriteSize/2, cowboy.transform.position.y);
+                cowboy.transform.localPosition = new Vector2((2*currShoot.cowboyPos-3)*spriteSize/2, 0);
+                //cowboy.transform.position = new Vector2((2*currShoot.cowboyPos-3)*spriteSize/2, cowboy.transform.position.y);
 
                 currEvent[currShoot.cowboyPos] = 0;
 
@@ -202,10 +211,12 @@ public class GenerationManager : MonoBehaviour
             shootEvents.AddLast(shootL);
             
             GameObject cowboyR = Instantiate(shootPrefab[1],floor);
-            cowboyR.transform.position = new Vector2((2*shootR.cowboyPos-3)*spriteSize/2, cowboyR.transform.position.y);
+            cowboyR.transform.localPosition = new Vector2((2*shootR.cowboyPos-3)*spriteSize/2, 0);
+            //cowboyR.transform.position = new Vector2((2*shootR.cowboyPos-3)*spriteSize/2, cowboyR.transform.position.y);
             
             GameObject cowboyL = Instantiate(shootPrefab[0],floor);
-            cowboyL.transform.position = new Vector2((2*shootL.cowboyPos-3)*spriteSize/2, cowboyL.transform.position.y);
+            cowboyL.transform.localPosition = new Vector2((2*shootL.cowboyPos-3)*spriteSize/2, 0);
+            //cowboyL.transform.position = new Vector2((2*shootL.cowboyPos-3)*spriteSize/2, cowboyL.transform.position.y);
 
             currEvent[shootL.cowboyPos] = 0;
 
@@ -223,7 +234,8 @@ public class GenerationManager : MonoBehaviour
             shootEvents.AddLast(shootR);
 
             GameObject cowboyR = Instantiate(shootPrefab[2],floor);
-            cowboyR.transform.position = new Vector2((2*shootR.cowboyPos-3)*spriteSize/2, cowboyR.transform.position.y);
+            cowboyR.transform.localPosition = new Vector2((2*shootR.cowboyPos-3)*spriteSize/2, 0);
+            //cowboyR.transform.position = new Vector2((2*shootR.cowboyPos-3)*spriteSize/2, cowboyR.transform.position.y);
 
             // Update the valid choices
             currEventChoice[shootR.cowboyPos].Clear();
@@ -266,7 +278,11 @@ public class GenerationManager : MonoBehaviour
         for (int i = 0; i < currEvent.Count; i++)
         {
 
-            if (spawnedFloor >= 2) break;
+            if (spawnedFloor >= 2) 
+            {
+                currEvent[i] = 1;
+                continue;
+            }
 
             // no choice, leave empty
             if (currEventChoice[i].Count == 0)
@@ -359,4 +375,33 @@ public class GenerationManager : MonoBehaviour
         }
     }
 
+    private void OrnamentGenerate(Transform floor, float spriteSize)
+    {
+        bool ifOrnament = UnityEngine.Random.Range(0f,1f) <= ornamentProb? true : false;
+        if (!ifOrnament) return;
+
+        int ornamentPos = 0;
+        
+        int bit1 = (currEvent[0] == 1)? 1 : 0;
+        int bit2 = (currEvent[3] == 1)? 1 : 0;
+        int bit3 = (prevEvent[0] == 2 || prevEvent[0] == 4)? 1 : 0;
+        int bit4 = (prevEvent[3] == 2 || prevEvent[3] == 4)? 1 : 0;
+        int result = (bit1 << 3) | (bit2 << 2) | (bit3 << 1) | bit4;
+
+        Debug.Log("result: "+result);
+
+        // 00xx
+        if(result < 4) return;
+        // 01xx / 1110
+        else if ((result >= 4 && result < 8) || result == 14) ornamentPos = 3;
+        // 10xx / 1101
+        else if ((result >= 8 && result < 12) || result == 13) ornamentPos = 0;
+        // 1100 / 1111
+        else if (result == 12 || result == 15) ornamentPos = UnityEngine.Random.Range(0, 2) * 3;
+
+
+        int ornamentType = UnityEngine.Random.Range(0, ornament.Count);
+        GameObject newObstacle = Instantiate(ornament[ornamentType], floor);
+        newObstacle.transform.localPosition = new Vector2(ornamentPos*11/3 - 5.5f, 0);
+    }
 }

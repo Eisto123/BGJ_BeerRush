@@ -141,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1613370544495073437}
   - component: {fileID: 4045095773927062180}
-  - component: {fileID: 2814631977033208146}
+  - component: {fileID: 4630125376540137448}
   m_Layer: 0
   m_Name: table
   m_TagString: Untagged
@@ -216,8 +216,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &2814631977033208146
-PolygonCollider2D:
+--- !u!61 &4630125376540137448
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -248,7 +248,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.12277365}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -258,51 +258,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 2.875, y: -9.625}
-      - {x: 3.0625, y: -8.9375}
-      - {x: 6.625, y: -9}
-      - {x: 6.8125, y: -8.3125}
-      - {x: 8.3125, y: -8.25}
-      - {x: 8.1875, y: -10.6875}
-      - {x: 8.75, y: -11.375}
-      - {x: 9.4375, y: -12}
-      - {x: 11.875, y: -12}
-      - {x: 12.25, y: -11.5}
-      - {x: 12.9375, y: -10.625}
-      - {x: 12.9375, y: -4.5}
-      - {x: 13.625, y: -4.75}
-      - {x: 15, y: -3.25}
-      - {x: 15.4375, y: -1.25}
-      - {x: 15.4375, y: 3.25}
-      - {x: 14.875, y: 3.375}
-      - {x: 14.8125, y: 5}
-      - {x: 14.3125, y: 5.6875}
-      - {x: 11, y: 9}
-      - {x: 8.5, y: 10.1875}
-      - {x: 6.5625, y: 10.75}
-      - {x: 2.8125, y: 11.375}
-      - {x: -2.9375, y: 11.375}
-      - {x: -3.0625, y: 10.8125}
-      - {x: -6.625, y: 10.875}
-      - {x: -7.0625, y: 10.5625}
-      - {x: -9.5, y: 9.8125}
-      - {x: -11, y: 9}
-      - {x: -14.8125, y: 5.1875}
-      - {x: -15.4375, y: 3.125}
-      - {x: -15.4375, y: -1.375}
-      - {x: -14.875, y: -1.5}
-      - {x: -14.9375, y: -3.1875}
-      - {x: -13.625, y: -4.5}
-      - {x: -13.0625, y: -4.6875}
-      - {x: -12.9375, y: -10.875}
-      - {x: -11.8125, y: -12}
-      - {x: -9.5625, y: -12}
-      - {x: -8.25, y: -10.875}
-      - {x: -6.875, y: -8.875}
-      - {x: -2.875, y: -9.6875}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 32.187363, y: 24.59797}
+  m_EdgeRadius: 0
 --- !u!1 &1687018206471207619
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8621338596753380912}
   - component: {fileID: 9195389307155135433}
-  - component: {fileID: 6250332277519864038}
+  - component: {fileID: 2616830875953221423}
   m_Layer: 0
   m_Name: chair4
   m_TagString: Untagged
@@ -388,8 +346,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &6250332277519864038
-PolygonCollider2D:
+--- !u!61 &2616830875953221423
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -420,7 +378,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.06402111, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -430,40 +388,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 2.5, y: -3.875}
-      - {x: 4.3125, y: -5.3125}
-      - {x: 6.5625, y: -5.125}
-      - {x: 7, y: -4.375}
-      - {x: 7, y: -2.5}
-      - {x: 6.4375, y: -1.75}
-      - {x: 5.8125, y: -1.625}
-      - {x: 5.875, y: 4.4375}
-      - {x: 5.3125, y: 5.1875}
-      - {x: 3.1875, y: 7.0625}
-      - {x: 1.25, y: 7.625}
-      - {x: -2, y: 7.625}
-      - {x: -2.125, y: 7.0625}
-      - {x: -3.75, y: 7}
-      - {x: -4.5625, y: 6.5625}
-      - {x: -6.5, y: 4.4375}
-      - {x: -6.375, y: -1.75}
-      - {x: -6.9375, y: -1.625}
-      - {x: -7.625, y: -2.5}
-      - {x: -7.625, y: -4.5625}
-      - {x: -7.0625, y: -5.125}
-      - {x: -4.9375, y: -5.25}
-      - {x: -4.25, y: -4.6875}
-      - {x: -2.875, y: -3.8125}
-      - {x: -2.75, y: -6.3125}
-      - {x: -2.1875, y: -7.0625}
-      - {x: -1.375, y: -7.625}
-      - {x: 0.875, y: -7.625}
-      - {x: 2.0625, y: -6.3125}
-      - {x: 2, y: -3.75}
-      - {x: 1.875, y: -3.625}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 20.311197, y: 15.6}
+  m_EdgeRadius: 0
 --- !u!1 &1692464854588346981
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +614,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.29870987, y: 0}
+  m_Offset: {x: -0.4907608, y: -0.44813776}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -698,7 +625,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 25.817928, y: 30}
+  m_Size: {x: 24.153439, y: 27.311195}
   m_EdgeRadius: 0
 --- !u!1 &5092087051333996530
 GameObject:
@@ -817,7 +744,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.14937115, y: 0}
+  m_Offset: {x: 0.36279202, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -828,7 +755,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 24.92177, y: 30}
+  m_Size: {x: 19.544199, y: 30}
   m_EdgeRadius: 0
 --- !u!1 &5418552166511444018
 GameObject:
@@ -947,7 +874,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.4783497, y: 0}
+  m_Offset: {x: 0.8624611, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -958,7 +885,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 22.56287, y: 30}
+  m_Size: {x: 20.258186, y: 30}
   m_EdgeRadius: 0
 --- !u!1 &5877162583753091118
 GameObject:
@@ -970,7 +897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7237660242135948508}
   - component: {fileID: 1683147726985869229}
-  - component: {fileID: 5570119391597650586}
+  - component: {fileID: 1140134529058492554}
   m_Layer: 0
   m_Name: chair
   m_TagString: Untagged
@@ -1045,8 +972,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &5570119391597650586
-PolygonCollider2D:
+--- !u!61 &1140134529058492554
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1087,40 +1014,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 2.5, y: -3.875}
-      - {x: 4.3125, y: -5.3125}
-      - {x: 6.5625, y: -5.125}
-      - {x: 7, y: -4.375}
-      - {x: 7, y: -2.5}
-      - {x: 6.4375, y: -1.75}
-      - {x: 5.8125, y: -1.625}
-      - {x: 5.875, y: 4.4375}
-      - {x: 5.3125, y: 5.1875}
-      - {x: 3.1875, y: 7.0625}
-      - {x: 1.25, y: 7.625}
-      - {x: -2, y: 7.625}
-      - {x: -2.125, y: 7.0625}
-      - {x: -3.75, y: 7}
-      - {x: -4.5625, y: 6.5625}
-      - {x: -6.5, y: 4.4375}
-      - {x: -6.375, y: -1.75}
-      - {x: -6.9375, y: -1.625}
-      - {x: -7.625, y: -2.5}
-      - {x: -7.625, y: -4.5625}
-      - {x: -7.0625, y: -5.125}
-      - {x: -4.9375, y: -5.25}
-      - {x: -4.25, y: -4.6875}
-      - {x: -2.875, y: -3.8125}
-      - {x: -2.75, y: -6.3125}
-      - {x: -2.1875, y: -7.0625}
-      - {x: -1.375, y: -7.625}
-      - {x: 0.875, y: -7.625}
-      - {x: 2.0625, y: -6.3125}
-      - {x: 2, y: -3.75}
-      - {x: 1.875, y: -3.625}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 23, y: 15.6}
+  m_EdgeRadius: 0
 --- !u!1 &5955882834786767004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,7 +1134,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1493597, y: -0.8961611}
+  m_Offset: {x: 0.2773986, y: -0.8961611}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1249,7 +1145,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 22.53198, y: 28.207678}
+  m_Size: {x: 20.739433, y: 28.207678}
   m_EdgeRadius: 0
 --- !u!1 &6425782306528482905
 GameObject:
@@ -1261,7 +1157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 771560144306324256}
   - component: {fileID: 4188240000714652435}
-  - component: {fileID: 519547362499144983}
+  - component: {fileID: 3336221451500557048}
   m_Layer: 0
   m_Name: chair3
   m_TagString: Untagged
@@ -1336,8 +1232,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &519547362499144983
-PolygonCollider2D:
+--- !u!61 &3336221451500557048
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1368,7 +1264,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.20974207, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1378,40 +1274,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 2.5, y: -3.875}
-      - {x: 4.3125, y: -5.3125}
-      - {x: 6.5625, y: -5.125}
-      - {x: 7, y: -4.375}
-      - {x: 7, y: -2.5}
-      - {x: 6.4375, y: -1.75}
-      - {x: 5.8125, y: -1.625}
-      - {x: 5.875, y: 4.4375}
-      - {x: 5.3125, y: 5.1875}
-      - {x: 3.1875, y: 7.0625}
-      - {x: 1.25, y: 7.625}
-      - {x: -2, y: 7.625}
-      - {x: -2.125, y: 7.0625}
-      - {x: -3.75, y: 7}
-      - {x: -4.5625, y: 6.5625}
-      - {x: -6.5, y: 4.4375}
-      - {x: -6.375, y: -1.75}
-      - {x: -6.9375, y: -1.625}
-      - {x: -7.625, y: -2.5}
-      - {x: -7.625, y: -4.5625}
-      - {x: -7.0625, y: -5.125}
-      - {x: -4.9375, y: -5.25}
-      - {x: -4.25, y: -4.6875}
-      - {x: -2.875, y: -3.8125}
-      - {x: -2.75, y: -6.3125}
-      - {x: -2.1875, y: -7.0625}
-      - {x: -1.375, y: -7.625}
-      - {x: 0.875, y: -7.625}
-      - {x: 2.0625, y: -6.3125}
-      - {x: 2, y: -3.75}
-      - {x: 1.875, y: -3.625}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 20.62302, y: 15.6}
+  m_EdgeRadius: 0
 --- !u!1 &7408402427836362602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,7 +1287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2119919858839286628}
   - component: {fileID: 2542610805976115378}
-  - component: {fileID: 4779466700512279257}
+  - component: {fileID: 5584644176564713307}
   m_Layer: 0
   m_Name: chair2
   m_TagString: Untagged
@@ -1497,8 +1362,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &4779466700512279257
-PolygonCollider2D:
+--- !u!61 &5584644176564713307
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1529,7 +1394,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.34954357, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1539,37 +1404,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 2.5, y: -3.875}
-      - {x: 4.3125, y: -5.3125}
-      - {x: 6.5625, y: -5.125}
-      - {x: 7, y: -4.375}
-      - {x: 7, y: -2.5}
-      - {x: 6.4375, y: -1.75}
-      - {x: 5.8125, y: -1.625}
-      - {x: 5.875, y: 4.4375}
-      - {x: 5.3125, y: 5.1875}
-      - {x: 3.1875, y: 7.0625}
-      - {x: 1.25, y: 7.625}
-      - {x: -2, y: 7.625}
-      - {x: -2.125, y: 7.0625}
-      - {x: -3.75, y: 7}
-      - {x: -4.5625, y: 6.5625}
-      - {x: -6.5, y: 4.4375}
-      - {x: -6.375, y: -1.75}
-      - {x: -6.9375, y: -1.625}
-      - {x: -7.625, y: -2.5}
-      - {x: -7.625, y: -4.5625}
-      - {x: -7.0625, y: -5.125}
-      - {x: -4.9375, y: -5.25}
-      - {x: -4.25, y: -4.6875}
-      - {x: -2.875, y: -3.8125}
-      - {x: -2.75, y: -6.3125}
-      - {x: -2.1875, y: -7.0625}
-      - {x: -1.375, y: -7.625}
-      - {x: 0.875, y: -7.625}
-      - {x: 2.0625, y: -6.3125}
-      - {x: 2, y: -3.75}
-      - {x: 1.875, y: -3.625}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 19.78412, y: 15.6}
+  m_EdgeRadius: 0

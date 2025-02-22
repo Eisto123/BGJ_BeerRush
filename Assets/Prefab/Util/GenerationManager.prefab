@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7987865817632125014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5867001673183574735}
+  - component: {fileID: 6383624576274783230}
+  m_Layer: 0
+  m_Name: GenerationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5867001673183574735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987865817632125014}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.0049748, y: 0.6502236, z: -9.973636}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6383624576274783230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987865817632125014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e0c5d178c75404ebcc5790d0f4a8ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startEvent: 00000000
+  numOfPixelX: 4
+  shootPrefab:
+  - {fileID: 3636822048625709453, guid: 5880d8a575cfebb428ec4c8cf1de521b, type: 3}
+  - {fileID: 8974226440505437984, guid: 9f652f6af7aaa884eb833dcdd739fb48, type: 3}
+  - {fileID: 1685726617098767984, guid: f88212307c858db41b7faebb07c604b2, type: 3}
+  - {fileID: 6981999118063064993, guid: 2164678a33f8d5545bff64b0afe84a2f, type: 3}
+  shootingProb: 0.297
+  customerTable: {fileID: 5229503483140682340, guid: f3c49d99f36602f429512f929ffce3ba, type: 3}
+  obstacles:
+  - obstacle: {fileID: 754607749799082851, guid: afee461d4a2ea7c4c8cae45305e2cfb4, type: 3}
+    radius: {x: 1.5, y: 0.5}
+  - obstacle: {fileID: 261987181444398369, guid: 2a083f6fdff0d324ca93ffb284f409d6, type: 3}
+    radius: {x: 0.6, y: 0.8}
+  - obstacle: {fileID: 6812070072810716249, guid: 1d9a909b0f8b207419d998d513a0ad5a, type: 3}
+    radius: {x: 0.5, y: 0.5}
+  - obstacle: {fileID: 2667423762643752343, guid: 5ba0e224fd1197a4483564bb740ae9ae, type: 3}
+    radius: {x: 1, y: 0.7}
+  - obstacle: {fileID: 131531610771369329, guid: bfbb1b6e5026ac24d9934c1d2bee3f8a, type: 3}
+    radius: {x: 1, y: 0.8}
+  - obstacle: {fileID: 2948709068475591105, guid: c8cb5417b43706243b40cdf4366a8ca2, type: 3}
+    radius: {x: 1, y: 0.7}
+  - obstacle: {fileID: 3201289463428667026, guid: 70220f9256374ae4aa6efbe06104e60a, type: 3}
+    radius: {x: 0.8, y: 0.8}
+  - obstacle: {fileID: 2948709068475591105, guid: c8cb5417b43706243b40cdf4366a8ca2, type: 3}
+    radius: {x: 1, y: 0.7}
+  - obstacle: {fileID: 3699203771515976594, guid: 60ce64c458086e841aee2bdb99724377, type: 3}
+    radius: {x: 0.7, y: 0.7}
+  - obstacle: {fileID: 5579954823320864503, guid: a098d86cda021d24eaa4b93d4be893fe, type: 3}
+    radius: {x: 0.7, y: 1}
+  naughtyProb: 0.251
+  dropCowboy: {fileID: 6812070072810716249, guid: 1d9a909b0f8b207419d998d513a0ad5a, type: 3}
+  runCowboy: {fileID: 5842362650224656692, guid: f3ff933a7cabf1547996e7822f172cf5, type: 3}
+  dropOffset: 1
+  OrnamentProb: 0.24
+  ornament:
+  - {fileID: 1852945272183581120, guid: 159879cc46254a0458d2037a760233a9, type: 3}
