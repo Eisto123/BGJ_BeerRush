@@ -5,7 +5,7 @@ using UnityEngine;
 public class BeerHolder : MonoBehaviour
 {
     public GameObject[] beers = new GameObject[6];
-    private bool beerIsFull;
+    public bool beerIsFull;
     public void AddBeer()
     {
         for (int i = 0; i < beers.Length; i++)

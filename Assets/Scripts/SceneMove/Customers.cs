@@ -124,6 +124,7 @@ public class Customers : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
+            if (player.isDead) return;
             // if the player get close, hand the beer
             beerSolved = true;
             startTimer = false;

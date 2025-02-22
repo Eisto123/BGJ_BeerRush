@@ -259,14 +259,20 @@ public class Player : MonoBehaviour
     public void AddBeer(int beerNum)
     {
         //Audio
-        if (!isDead)
-            AudioManager.Instance.PlaySFX(2);
+        // if (!isDead)
+        //     AudioManager.Instance.PlaySFX(2);
         
         StartCoroutine(AddingBeer(beerNum));
     }
 
     private IEnumerator AddingBeer(int beerNum)
-    {for (int i = 0; i < beerNum; i++)
+    {
+        if (!beerHolder.beerIsFull && !isDead)
+        {
+            //Audio
+            AudioManager.Instance.PlaySFX(2);
+        }
+        for (int i = 0; i < beerNum; i++)
         {
             beerHolder.AddBeer();
             yield return new WaitForSeconds(0.2f);
