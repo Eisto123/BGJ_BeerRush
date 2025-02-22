@@ -172,6 +172,12 @@ public class Player : MonoBehaviour
         StartCoroutine(FallOffRoutine());
         Debug.Log("Player has fallen!");
     }
+    public void DieByBullet()
+    {
+        isDead = true;
+        playerAnim.SetTrigger("Die");
+        StartCoroutine(FallOffRoutine());
+    }
 
     private IEnumerator FallOffRoutine()
     {
@@ -182,7 +188,6 @@ public class Player : MonoBehaviour
         while (elapsedTime < deathTime)
         {
             rb.velocity = Vector2.Lerp(initialVelocity, Vector2.zero, elapsedTime / deathTime);
-            Time.timeScale = Mathf.Lerp(1, 0.5f, elapsedTime / deathTime);
             elapsedTime += Time.deltaTime;
             if (elapsedTime / deathTime> 0.5f)
             {
@@ -200,15 +205,10 @@ public class Player : MonoBehaviour
         {
             FallOff();
         }
-    }
-
-    public void OnRestart()
-    {
-        Time.timeScale = 1;
-        isDead = false;
-        balance = 0;
-        rb.velocity = Vector2.zero;
-        transform.position = new Vector3(0, 0, 0);
+        if (collision.CompareTag("Bullet"))
+        {
+            DieByBullet();
+        }
     }
     
     public void ReduceBeer(int beerNum)

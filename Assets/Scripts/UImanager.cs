@@ -13,20 +13,6 @@ public class UImanager : MonoBehaviour
 
     private List<GameObject> digitObjects = new List<GameObject>();
 
-    void Start()
-    {
-        StartCoroutine(scoretest());
-    } 
-
-    IEnumerator scoretest(){
-        UpdateScore(3);
-        yield return new WaitForSeconds(2f);
-        UpdateScore(13);
-        yield return new WaitForSeconds(2f);
-        UpdateScore(123);
-        yield return new WaitForSeconds(2f);
-        UpdateScore(1234);
-    }
     public void UpdateScore(int score)
     {
         // Convert score to string to process each digit
@@ -38,6 +24,8 @@ public class UImanager : MonoBehaviour
             Destroy(digitObjects[digitObjects.Count - 1]);
             digitObjects.RemoveAt(digitObjects.Count - 1);
         }
+
+        int totalWidth = (scoreStr.Length - 1) * spacing;
 
         // Create/update UI elements for each digit
         for (int i = 0; i < scoreStr.Length; i++)
@@ -55,7 +43,8 @@ public class UImanager : MonoBehaviour
             digitObjects[i].GetComponent<Image>().sprite = numbers[digit];
 
             // Adjust position (left to right)
-            digitObjects[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(i * spacing + offset.x, offset.y);
+            
+            digitObjects[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(i * spacing - totalWidth / 2f + offset.x, offset.y);
         }
     }
 }
