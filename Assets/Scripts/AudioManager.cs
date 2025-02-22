@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
@@ -6,12 +7,16 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public List<AudioClip> BGMClips;
+    private float bgmStartVolume;
     public List<AudioClip> PlayerSFX;
+    private float SFXStartVolume;
     public List<AudioClip> enviromentSFX;
+    public List<AudioClip> cowboySFX;
 
     public AudioSource BGM;
     public AudioSource SFX;
     public AudioSource Enviroment;
+    public AudioSource CowboyAS;
 
     public static AudioManager Instance;
 
@@ -20,6 +25,9 @@ public class AudioManager : MonoBehaviour
         if(Instance == null){
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            bgmStartVolume = BGM.volume;
+            SFXStartVolume = SFX.volume;
         }
         else
         {
@@ -36,7 +44,36 @@ public class AudioManager : MonoBehaviour
         BGM.Play();
     }
 
+    public IEnumerator PlayBGM(int i, float fadeTime, bool restart=false){
+
+        if(BGM.clip == BGMClips[i] && !restart){
+            yield return null;
+        }
+
+        BGM.volume = 0;
+        BGM.clip = BGMClips[i];
+        BGM.Play();
+
+        while (BGM.volume < bgmStartVolume) {
+            BGM.volume += bgmStartVolume * Time.deltaTime / fadeTime;
+
+            yield return null;
+        }
+
+        BGM.volume = bgmStartVolume;
+        
+    }
+
     public void PlaySFX(int i){
+        SFX.clip = PlayerSFX[i];
+        SFX.volume = SFXStartVolume;
+        SFX.Play();
+    }
+
+    public IEnumerator PlaySFX(int i, float time)
+    {
+        yield return new WaitForSeconds(time);
+        SFX.volume = SFXStartVolume;
         SFX.clip = PlayerSFX[i];
         SFX.Play();
     }
@@ -46,8 +83,20 @@ public class AudioManager : MonoBehaviour
         Enviroment.Play();
     }
 
+    public IEnumerator PlayEnviroment(int i, float time)
+    {
+        yield return new WaitForSeconds(time);
+        Enviroment.clip = enviromentSFX[i];
+        Enviroment.Play();
+    }
+
+    public void PlayCowboy(int i){
+        CowboyAS.clip = cowboySFX[i];
+        CowboyAS.Play();
+    }
+
     public void FadeOutBGM(){
-        StartCoroutine(FadeOut(BGM,3f));
+        StartCoroutine(FadeOut(BGM,2f));
     }
 
     public void FadeOutSFX(){
@@ -55,6 +104,10 @@ public class AudioManager : MonoBehaviour
     }
     public void FadeOutEnviroment(){
         StartCoroutine(FadeOut(Enviroment,1f));
+    }
+
+    public void FadeOutCowboy(){
+        StartCoroutine(FadeOut(CowboyAS,1f));
     }
 
     private IEnumerator FadeOut(AudioSource audioSource, float fadeTime){
@@ -68,6 +121,40 @@ public class AudioManager : MonoBehaviour
 
         audioSource.Stop ();
         audioSource.volume = startVolume;
+    }
+
+    public void DisableAudioSource(params string[] audioName)
+    {
+        foreach (string name in audioName)
+        {
+            switch (name)
+            {
+                case "BGM":
+                    BGM.enabled = false;
+                    break;
+                case "SFX":
+                    SFX.enabled = false;
+                    break;
+                case "Environment":
+                    Enviroment.enabled = false;
+                    break;
+                case "Cowboy":
+                    CowboyAS.enabled = false;
+                    break;
+            }
+        }
+    }
+
+    public void EnableAudioSource()
+    {
+        BGM.enabled = true;
+        SFX.enabled = true;
+        SFX.clip = null;
+        Enviroment.enabled = true;
+        Enviroment.clip = null;
+        CowboyAS.enabled = true;
+        CowboyAS.clip = null;
+
     }
 
 }

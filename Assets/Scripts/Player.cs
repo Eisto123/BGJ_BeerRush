@@ -38,12 +38,24 @@ public class Player : MonoBehaviour
     public Animator playerAnim;
     public BeerHolder beerHolder;
 
+    [Header("Audio")]
+    public AudioSource playerAudioSource;
+    public IEnumerator PlayFootStep(){
+        if(!playerAudioSource.isPlaying){
+
+            yield return new WaitForSeconds(0.5f);
+            playerAudioSource.Play();
+        }
+    }
 
     void Awake()
     {
         playerControl = new PlayerControl();
         rb = GetComponent<Rigidbody2D>();
-        
+        playerAudioSource = GetComponent<AudioSource>();
+        AudioManager.Instance.EnableAudioSource();
+        StartCoroutine(PlayFootStep());
+        StartCoroutine(AudioManager.Instance.PlayBGM(0,0.5f,true));
     }
 
 
@@ -138,6 +150,11 @@ public class Player : MonoBehaviour
 
     private IEnumerator Dash(float direction)
     {
+        // Audio
+        playerAudioSource.Stop();
+        AudioManager.Instance.PlaySFX(1);
+
+
         canDash = false;
         isDashing = true;
 
@@ -159,6 +176,9 @@ public class Player : MonoBehaviour
 
         isDashing = false;
 
+        // Audio
+        StartCoroutine(PlayFootStep());
+
         yield return new WaitForSeconds(dashCooldown);
 
         canDash = true;
@@ -169,6 +189,12 @@ public class Player : MonoBehaviour
         isDead = true;
         
         playerAnim.SetTrigger("FallOff");
+
+        //Audio break
+        playerAudioSource.Stop();
+        //AudioManager.Instance.PlaySFX(4);
+        StartCoroutine(AudioManager.Instance.PlaySFX(4, 0.75f));
+
         StartCoroutine(FallOffRoutine());
         Debug.Log("Player has fallen!");
     }
@@ -176,6 +202,11 @@ public class Player : MonoBehaviour
     {
         isDead = true;
         playerAnim.SetTrigger("Die");
+
+        //Audio, cry
+        playerAudioSource.Stop();
+        AudioManager.Instance.PlayEnviroment(3);
+
         StartCoroutine(FallOffRoutine());
     }
 
@@ -196,6 +227,7 @@ public class Player : MonoBehaviour
             yield return null; // Wait for next frame
         }
         rb.velocity = Vector2.zero;
+
         //UI pannel
     }
 
@@ -226,12 +258,14 @@ public class Player : MonoBehaviour
 
     public void AddBeer(int beerNum)
     {
+        //Audio
+        AudioManager.Instance.PlaySFX(2);
+        
         StartCoroutine(AddingBeer(beerNum));
     }
 
     private IEnumerator AddingBeer(int beerNum)
-    {
-        for (int i = 0; i < beerNum; i++)
+    {for (int i = 0; i < beerNum; i++)
         {
             beerHolder.AddBeer();
             yield return new WaitForSeconds(0.2f);

@@ -7,9 +7,19 @@ public class StartMenu : MonoBehaviour
 {
     public string mainLevelName;
 
+    void Start()
+    {
+        StartCoroutine(AudioManager.Instance.PlayBGM(0,0.01f,true));   
+    }
+
     public void PlayClick()
     {
         Debug.Log("load");
         SceneManager.LoadScene(mainLevelName);
+    }
+
+    public void ClickSFX()
+    {
+        AudioManager.Instance.PlayEnviroment(5);
     }
 }

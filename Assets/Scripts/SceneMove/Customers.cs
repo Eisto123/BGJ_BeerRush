@@ -81,6 +81,9 @@ public class Customers : MonoBehaviour
         {
             beerBubble.SetBool("miss", true);
 
+            //Audio
+            AudioManager.Instance.PlayEnviroment(0);
+            
             // GameManager, count miss numbers
         }
     }

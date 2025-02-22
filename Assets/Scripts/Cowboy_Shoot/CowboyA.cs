@@ -32,6 +32,10 @@ public class CowboyA : Cowboy
         yield return new WaitForSeconds(1f);
         animator.SetTrigger("shoot");
         Debug.Log("CowboyA fires a bullet!");
+
+        //Audio
+        AudioManager.Instance.PlayCowboy(0);
+
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
         bullet.GetComponent<SpriteRenderer>().flipX = true;
         bullet.GetComponent<Rigidbody2D>().velocity = Vector2.left * bulletSpeed;
@@ -44,6 +48,10 @@ public class CowboyA : Cowboy
         if (collision.gameObject.CompareTag("Bullet"))
         {
             Debug.Log("CowboyA is hit by a bullet!");
+
+            //Audio, beingshot
+            AudioManager.Instance.PlayCowboy(2);
+
             shootIndicator.SetActive(false);
             animator.SetTrigger("isDead");
             Destroy(collision.gameObject);

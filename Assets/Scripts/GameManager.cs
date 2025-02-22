@@ -45,8 +45,17 @@ public class GameManager : MonoBehaviour
     {
     }
 
+    private bool ifBGMFade = false;
     public void GameOver()
-    {
+    {   
+        if(!ifBGMFade)
+        {
+            //Audio
+            AudioManager.Instance.FadeOutBGM();
+            AudioManager.Instance.DisableAudioSource("Environment", "Cowboy");
+            ifBGMFade = true;
+        }
+
         if (score > highestScore)
         {
             highestScore = score;
@@ -86,8 +95,21 @@ public class GameManager : MonoBehaviour
         fadeMask.color = finalColor;
     }
 
+    private bool ifFadeSFX = false;
+
     private IEnumerator FallDownBeer()
     {
+        //Audio
+        /*if (!ifFadeSFX)
+        {
+            AudioManager.Instance.FadeOutSFX();
+            ifFadeSFX = true;
+        }*/
+        //AudioManager.Instance.PlayEnviroment(6);
+        //StartCoroutine(AudioManager.Instance.PlayEnviroment(6, 0.83f));
+        AudioManager.Instance.PlaySFX(4);
+        StartCoroutine(AudioManager.Instance.PlayBGM(1, 4f));
+
         float start = beerImage.rectTransform.anchoredPosition.y;
         float rate = 1.0f / fallSpeed;
         float progress = 0.0f;
@@ -125,6 +147,9 @@ public class GameManager : MonoBehaviour
 
     public void GetPoint(int point)
     {
+        //Audio, getpoint
+        AudioManager.Instance.PlaySFX(3);
+
         score += point;
         if(yourScore!=null){
             yourScore.SetActive(true);

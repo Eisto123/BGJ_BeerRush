@@ -42,6 +42,10 @@ public class CowboyC : Cowboy
         shootIndicator.SetActive(true);
         yield return new WaitForSeconds(1f);
         animator.SetTrigger("shoot");
+
+        //Audio
+        AudioManager.Instance.PlayCowboy(0);
+
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
         bullet.GetComponent<SpriteRenderer>().flipX = true;
         bullet.transform.eulerAngles = new Vector3(0, 0, -30);
@@ -57,8 +61,11 @@ public class CowboyC : Cowboy
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            
             Debug.Log("CowboyC is hit by a bullet!");
+            
+            //Audio, beingshot
+            AudioManager.Instance.PlayCowboy(2);
+
             shootIndicator.SetActive(false);
             animator.SetTrigger("isDead");
             Destroy(collision.gameObject);
