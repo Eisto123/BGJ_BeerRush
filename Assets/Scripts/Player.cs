@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -160,8 +161,8 @@ public class Player : MonoBehaviour
         // Audio
         playerAudioSource.Stop();
         AudioManager.Instance.PlaySFX(1);
-
         dashIndicator.SetActive(true);
+        
         canDash = false;
         isDashing = true;
 
@@ -174,7 +175,6 @@ public class Player : MonoBehaviour
         {
             rb.MovePosition(Vector2.Lerp(startPos, targetPos, elapsedTime / dashTime));
             balance = Mathf.Lerp(balance, balanceAfterDash, elapsedTime / dashTime);
-
             elapsedTime += Time.deltaTime;
             yield return null; // Wait for next frame
         }
@@ -182,13 +182,30 @@ public class Player : MonoBehaviour
         rb.MovePosition(targetPos); // Ensure final position is accurate
 
         isDashing = false;
-
+        
         // Audio
         StartCoroutine(PlayFootStep());
 
         yield return new WaitForSeconds(dashCooldown);
-        dashIndicator.SetActive(false);
+        StartCoroutine(FadeOutIndicator());
+        yield return new WaitForSeconds(1f);
         canDash = true;
+    }
+
+    private IEnumerator FadeOutIndicator()
+    {
+        float elapsedTime = 0f;
+        Color startColor = dashIndicator.GetComponent<Image>().color;
+
+        while (elapsedTime < 1f)
+        {
+            dashIndicator.GetComponent<Image>().color = Color.Lerp(dashIndicator.GetComponent<Image>().color, new Color(1,1,1,0), elapsedTime);
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for next frame
+        }
+        
+        dashIndicator.SetActive(false);
+        dashIndicator.GetComponent<Image>().color = startColor;
     }
 
     public void FallOff()
