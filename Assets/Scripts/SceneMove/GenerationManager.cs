@@ -198,8 +198,6 @@ public class GenerationManager : MonoBehaviour
         shootR.direction = 1;
         shootR.cowboyPos = UnityEngine.Random.Range(2,4);
 
-        currEvent[shootR.cowboyPos] = 0;
-
         if (shootR.type == 0) // staright
         {
             ShootEvent shootL = new ShootEvent();
@@ -218,6 +216,7 @@ public class GenerationManager : MonoBehaviour
             cowboyL.transform.localPosition = new Vector2((2*shootL.cowboyPos-3)*spriteSize/2, 0);
             //cowboyL.transform.position = new Vector2((2*shootL.cowboyPos-3)*spriteSize/2, cowboyL.transform.position.y);
 
+            currEvent[shootR.cowboyPos] = 0;
             currEvent[shootL.cowboyPos] = 0;
 
             return true;
@@ -238,6 +237,7 @@ public class GenerationManager : MonoBehaviour
             //cowboyR.transform.position = new Vector2((2*shootR.cowboyPos-3)*spriteSize/2, cowboyR.transform.position.y);
 
             // Update the valid choices
+            currEvent[shootR.cowboyPos] = 0;
             currEventChoice[shootR.cowboyPos].Clear();
             currEventChoice[shootR.cowboyPos-1].Clear();
         }
@@ -280,7 +280,7 @@ public class GenerationManager : MonoBehaviour
 
             if (spawnedFloor >= 2) 
             {
-                currEvent[i] = 1;
+                currEvent[i] = currEvent[i] == 0? 0:1;
                 continue;
             }
 
@@ -403,5 +403,7 @@ public class GenerationManager : MonoBehaviour
         int ornamentType = UnityEngine.Random.Range(0, ornament.Count);
         GameObject newObstacle = Instantiate(ornament[ornamentType], floor);
         newObstacle.transform.localPosition = new Vector2(ornamentPos*11/3 - 5.5f, 0);
+
+        currEvent[ornamentPos] = 4;
     }
 }
