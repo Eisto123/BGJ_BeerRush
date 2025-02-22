@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
 
     [Header("Lose Events")]
     public UnityEvent onDeath;
-    private bool isDead = false;
+    public bool isDead = false;
 
     private Rigidbody2D rb;
     public Animator playerAnim;
@@ -259,7 +259,8 @@ public class Player : MonoBehaviour
     public void AddBeer(int beerNum)
     {
         //Audio
-        AudioManager.Instance.PlaySFX(2);
+        if (!isDead)
+            AudioManager.Instance.PlaySFX(2);
         
         StartCoroutine(AddingBeer(beerNum));
     }
