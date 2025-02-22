@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
 using Unity.Mathematics;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -34,9 +35,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        DontDestroyOnLoad(this);
-        //GameOver();
 
     }
     private void OnEnable()
@@ -128,8 +126,20 @@ public class GameManager : MonoBehaviour
     public void GetPoint(int point)
     {
         score += point;
+        if(yourScore!=null){
+            yourScore.SetActive(true);
+        }
+        
         scoreUI.GetComponent<UImanager>().UpdateScore(score);
         
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("StartMenu");
     }
 
 }

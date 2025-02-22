@@ -105,7 +105,7 @@ public class Customers : MonoBehaviour
 
         
         beerBubble.gameObject.SetActive(true);
-
+        player.AddBeer(beerNum);
         // Player get #beerNum new beer
         Debug.Log("get "+beerNum+" beer");
     }
@@ -127,8 +127,11 @@ public class Customers : MonoBehaviour
             beerBubble.gameObject.SetActive(false);
             
             // customer happy, get score
+            player.ReduceBeer(beerNum);
+            GameManager.instance.GetPoint(beerNum);
             Debug.Log("get score");
             trigger.enabled = false;
+            
         }
     }
 }
