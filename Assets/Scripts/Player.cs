@@ -34,6 +34,10 @@ public class Player : MonoBehaviour
     public UnityEvent onDeath;
     public bool isDead = false;
 
+    [Header("Time Scaling")]
+    public float timeGrowthRate = 0.01f; // Controls how fast time speeds up
+    public float maxTimeScale = 3f; // Prevents the game from speeding up infinitely
+
     private Rigidbody2D rb;
     public Animator playerAnim;
     public BeerHolder beerHolder;
@@ -76,9 +80,11 @@ public class Player : MonoBehaviour
         {
             playerMovement = playerControl.Player.Move.ReadValue<Vector2>();
             CheckBalance();
+            Time.timeScale = Mathf.Min(1f + (Time.timeSinceLevelLoad * timeGrowthRate), maxTimeScale);
         }
         else
         {
+            Time.timeScale = 1f;
             playerMovement = Vector2.zero;
         }
         

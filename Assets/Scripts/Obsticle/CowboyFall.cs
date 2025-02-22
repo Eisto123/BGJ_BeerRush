@@ -17,6 +17,7 @@ public class CowboyFall : MonoBehaviour
     private float startZ;
     private bool playerIsNearBy;
     private GameObject player;
+    private bool isFalling = false;
 
     void Start()
     {
@@ -36,11 +37,17 @@ public class CowboyFall : MonoBehaviour
 
     void Update()
     {
+        
         if (Mathf.Abs(transform.position.y - player.transform.position.y) < 5f)
         {
             playerIsNearBy = true;
         }
         if(playerIsNearBy){
+            if(!isFalling){
+                isFalling = true;
+                Debug.Log("Cowboy is falling");
+                AudioManager.Instance.PlayEnviroment(3);
+            }
             if (transform.position.z > groundZ)
         {
             // Move cowboy down

@@ -107,7 +107,8 @@ public class GameManager : MonoBehaviour
         }*/
         //AudioManager.Instance.PlayEnviroment(6);
         //StartCoroutine(AudioManager.Instance.PlayEnviroment(6, 0.83f));
-        AudioManager.Instance.PlaySFX(4);
+        
+        
         StartCoroutine(AudioManager.Instance.PlayBGM(1, 4f));
 
         float start = beerImage.rectTransform.anchoredPosition.y;
@@ -124,6 +125,7 @@ public class GameManager : MonoBehaviour
         }
         if(beerImage.rectTransform.anchoredPosition.y <= fallEndY)
         {
+            AudioManager.Instance.PlaySFX(4);
             beerImage.rectTransform.anchoredPosition = new Vector2(beerImage.rectTransform.anchoredPosition.x, fallEndY);
             beerImage.sprite = beerBreak;
             float startAlpha = beerImage.color.a;
