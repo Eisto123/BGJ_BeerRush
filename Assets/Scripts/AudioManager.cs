@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
     {
         if(Instance == null){
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
 
             bgmStartVolume = BGM.volume;
             SFXStartVolume = SFX.volume;

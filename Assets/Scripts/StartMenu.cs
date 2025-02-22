@@ -9,8 +9,8 @@ public class StartMenu : MonoBehaviour
 
     void Start()
     {
-        AudioManager.Instance.EnableAudioSource();
-        StartCoroutine(AudioManager.Instance.PlayBGM(0,0.01f,true));   
+        //AudioManager.Instance.EnableAudioSource();
+        //StartCoroutine(AudioManager.Instance.PlayBGM(0,0.01f,true));   
     }
 
     public void PlayClick()
@@ -21,6 +21,6 @@ public class StartMenu : MonoBehaviour
 
     public void ClickSFX()
     {
-        AudioManager.Instance.PlayEnviroment(5);
+        //AudioManager.Instance.PlayEnviroment(5);
     }
 }

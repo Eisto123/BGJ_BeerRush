@@ -53,9 +53,9 @@ public class Player : MonoBehaviour
         playerControl = new PlayerControl();
         rb = GetComponent<Rigidbody2D>();
         playerAudioSource = GetComponent<AudioSource>();
-        AudioManager.Instance.EnableAudioSource();
+        //AudioManager.Instance.EnableAudioSource();
         StartCoroutine(PlayFootStep());
-        StartCoroutine(AudioManager.Instance.PlayBGM(0,0.5f,true));
+        //StartCoroutine(AudioManager.Instance.PlayBGM(0,0.5f,true));
     }
 
 
