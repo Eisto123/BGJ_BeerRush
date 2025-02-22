@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     public Animator playerAnim;
     public BeerHolder beerHolder;
+    public GameObject dashIndicator;
 
     [Header("Audio")]
     public AudioSource playerAudioSource;
@@ -160,7 +161,7 @@ public class Player : MonoBehaviour
         playerAudioSource.Stop();
         AudioManager.Instance.PlaySFX(1);
 
-
+        dashIndicator.SetActive(true);
         canDash = false;
         isDashing = true;
 
@@ -186,7 +187,7 @@ public class Player : MonoBehaviour
         StartCoroutine(PlayFootStep());
 
         yield return new WaitForSeconds(dashCooldown);
-
+        dashIndicator.SetActive(false);
         canDash = true;
     }
 
