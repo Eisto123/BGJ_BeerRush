@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
         while(progress < 1f)
         {
             Vector2 anchorPos = beerImage.rectTransform.anchoredPosition;
-            anchorPos.y = Mathf.Lerp(start, fallEndY-1, progress);
+            anchorPos.y = Mathf.Lerp(start, fallEndY-10, progress);
             beerImage.rectTransform.anchoredPosition = anchorPos;
             progress += rate * Time.deltaTime;
             yield return null;
