@@ -13,6 +13,7 @@ public abstract class Cowboy : MonoBehaviour
     protected GameObject player;
     protected Vector3 targetPosition;
     private float initialY;
+    private bool isStarted = false;
 
     protected virtual void Start()
     {
@@ -23,15 +24,16 @@ public abstract class Cowboy : MonoBehaviour
     private IEnumerator StartProcess()
     {
         yield return new WaitForSeconds(2f);
-        initialY = transform.position.y;
+        initialY = transform.position.y+transform.lossyScale.y+0.3f;
         PickNewPosition();
+        isStarted = true;
         Debug.Log(initialY);
     }
 
     protected virtual void Update()
     {
         CheckPlayerIsNearBy();
-        if(!isShooting){
+        if(!isShooting&&isStarted){
             Move();
             if(playerIsNearBy){
                 CheckForShooting();

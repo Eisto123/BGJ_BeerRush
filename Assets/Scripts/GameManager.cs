@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     public Image beerImage;
     public Sprite beerBreak;
-    public float fallSpeed = 2f;
+    public float fallSpeed;
     public float fallEndY = 0;
 
     private void Awake()
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         
         yield return new WaitForSeconds(fadeSpeed);
         StartCoroutine(FallDownBeer());
-        yield return new WaitForSeconds(fallSpeed+2f);
+        yield return new WaitForSeconds(fallSpeed+1f);
         gameoverPanel.SetActive(true);
         Endscores.UpdateScore(score);
 
@@ -115,20 +115,23 @@ public class GameManager : MonoBehaviour
         float rate = 1.0f / fallSpeed;
         float progress = 0.0f;
 
-        while(progress < 1f)
+        while(progress < 1f&&beerImage.rectTransform.anchoredPosition.y > fallEndY)
         {
             Vector2 anchorPos = beerImage.rectTransform.anchoredPosition;
-            anchorPos.y = Mathf.Lerp(start, fallEndY-10, progress);
+            anchorPos.y = Mathf.Lerp(start, fallEndY-30, progress);
             beerImage.rectTransform.anchoredPosition = anchorPos;
             progress += rate * Time.deltaTime;
             yield return null;
         }
         if(beerImage.rectTransform.anchoredPosition.y <= fallEndY)
         {
-            AudioManager.Instance.PlaySFX(4);
+            
             beerImage.rectTransform.anchoredPosition = new Vector2(beerImage.rectTransform.anchoredPosition.x, fallEndY);
             beerImage.sprite = beerBreak;
             float startAlpha = beerImage.color.a;
+            if(!AudioManager.Instance.SFX.isPlaying){
+                AudioManager.Instance.PlaySFX(4);
+            }
             float colorRate = 1.0f / fallSpeed;
             progress = 0.0f;
 
