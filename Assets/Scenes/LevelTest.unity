@@ -377,6 +377,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 58675668235440509, guid: f6f48f81bc6d382428680449bf1d6c75, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 559386151564382789, guid: f6f48f81bc6d382428680449bf1d6c75, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.08
@@ -638,6 +642,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4553812107587243327, guid: f6f48f81bc6d382428680449bf1d6c75, type: 3}
+      propertyPath: offset.x
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4553812107587243327, guid: f6f48f81bc6d382428680449bf1d6c75, type: 3}
       propertyPath: numbers.Array.data[0]
       value: 
       objectReference: {fileID: 21300000, guid: 34ec63e898c257e4896d21f8ffc8e55c, type: 3}
@@ -733,6 +741,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6527416247408073980, guid: f6f48f81bc6d382428680449bf1d6c75, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527416247408073980, guid: f6f48f81bc6d382428680449bf1d6c75, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -749710212, guid: 1b0e51e5a98d1b9428df94d96b07e452, type: 3}
     - target: {fileID: 7844743818341961943, guid: f6f48f81bc6d382428680449bf1d6c75, type: 3}
       propertyPath: m_Name
       value: UI
